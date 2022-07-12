@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 const links = [
   { name: "Password", target: "/" },
-  { name: "Am i pwned", target: "/pwned" },
   { name: "Generate", target: "/generate" },
   { name: "About", target: "about" },
 ];

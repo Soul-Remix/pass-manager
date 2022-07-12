@@ -14,11 +14,13 @@ interface IPasswordApiResponse {
   };
   feedback: {
     warning: string;
-    suggestion: Array<string>;
+    suggestions: Array<string>;
   };
   guesses: number;
+  guesses_log10: number;
   score: number;
   message: string;
+  password: string;
 }
 
 export default IPasswordApiResponse;

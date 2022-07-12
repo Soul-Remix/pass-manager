@@ -1,5 +1,6 @@
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import IPasswordApiResponse from "../../types/passwordApiResponse";
+import Button from "../Button/Button";
 
 interface IProps {
   isLoading: boolean;
@@ -58,11 +59,7 @@ const PasswordInput = ({
         value={value}
         onChange={(s) => onChange(s.currentTarget.value)}
       />
-      <button
-        onClick={onSubmit}
-        disabled={isLoading}
-        className="mt-8 mb-6 p-4 bg-main dark:bg-mainDark text-black rounded-lg shadow-md text-lg flex justify-center items-center"
-      >
+      <Button onClick={onSubmit} disabled={isLoading}>
         {isLoading ? (
           <>
             <svg
@@ -77,7 +74,7 @@ const PasswordInput = ({
                 cy="12"
                 r="10"
                 stroke="currentColor"
-                stroke-width="4"
+                strokeWidth="4"
               ></circle>
               <path
                 className="opacity-75"
@@ -90,7 +87,7 @@ const PasswordInput = ({
         ) : (
           "Check password"
         )}
-      </button>
+      </Button>
     </form>
   );
 };
