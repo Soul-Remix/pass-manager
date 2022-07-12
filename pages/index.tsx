@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Footer from "../components/Footer/Footer";
 import ResponsiveNavBar from "../components/ResponsiveNavBar/ResponsiveNavBar";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className="dark">
       <Head>
         <title>Password Strength</title>
         <meta name="description" content="Test your password strength" />
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
       </Head>
       <ResponsiveNavBar />
       <main className="min-h-screen"></main>
+      <Footer />
     </div>
   );
 };

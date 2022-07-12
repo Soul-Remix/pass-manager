@@ -16,7 +16,7 @@ const ResponsiveNavBar = () => {
 
   const navLinks = links.map((link) => {
     return (
-      <Link href={link.target}>
+      <Link href={link.target} key={link.name}>
         <a
           className={`no-underline text-gray-800 dark:text-lightestSlate text-lg hover:text-main dark:hover:text-mainDark cursor-pointer ${
             router.pathname === link.target
