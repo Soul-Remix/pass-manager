@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 const links = [
-  { name: "Password", target: "/" },
+  { name: "Home", target: "/" },
   { name: "Generate", target: "/generate" },
   { name: "About", target: "about" },
 ];
