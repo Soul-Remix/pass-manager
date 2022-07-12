@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 const links = [
   { name: "Password", target: "/" },
-  { name: "Ami i pwned", target: "/pwned" },
+  { name: "Am i pwned", target: "/pwned" },
   { name: "Generate", target: "/generate" },
   { name: "About", target: "about" },
 ];
@@ -66,7 +66,7 @@ const Navbar = ({ menuOpen, setMenuOpen, navLinks }: any) => (
 );
 
 const MobileMenu = ({ children }: { children: any }) => (
-  <nav className="p-4 flex flex-col space-y-3 md:hidden items-center ">
+  <nav className="p-4 pt-0 flex flex-col space-y-3 md:hidden items-center ">
     {children}
   </nav>
 );
