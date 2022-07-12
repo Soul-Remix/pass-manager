@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="sticky bottom-0 flex flex-col justify-center content-center flex-wrap p-4 bg-white dark:bg-navy">
+    <footer className="flex flex-col justify-center content-center flex-wrap p-4 bg-white dark:bg-navy">
       <a
         href="https://soul-remix.netlify.app/"
         className={textStyle}

@@ -33,7 +33,7 @@ const ResponsiveNavBar = () => {
   return (
     <header
       className={
-        "p-4 md:pr-16 md:pl-16 lg:pr-20 lg:pl-20 bg-white pb-0 pt-0 transition-all duration-300 dark:bg-lightNavy shadow-md sticky top-0"
+        "p-4 md:pr-16 md:pl-16 lg:pr-20 lg:pl-20 bg-white pb-0 pt-0 transition-all duration-300 dark:bg-lightNavy shadow-md "
       }
     >
       <Navbar

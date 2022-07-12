@@ -5,7 +5,7 @@ const Layout = ({ children }: any) => {
   return (
     <div className="grid min-h-screen grid-rows-[auto,1fr,auto]">
       <ResponsiveNavBar />
-      <main>{children}</main>
+      <main className="bg-white dark:bg-navy">{children}</main>
       <Footer />
     </div>
   );
