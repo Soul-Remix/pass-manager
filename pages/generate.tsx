@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import Button from "../components/Button/Button";
 import CheckBox from "../components/CheckBox/CheckBox";
+import PasswordHistory from "../components/PasswordHistory/PasswordHistory";
 import generatePassword from "../utils/generatePassword";
 
 const passHistory: Array<{ date: number; pass: string }> = [];
@@ -87,6 +88,7 @@ const Generate: NextPage = () => {
           <Button className="bg-slate dark:bg-slate">{ClockSvg}</Button>
         </div>
       </section>
+      <PasswordHistory history={passHistory} />
     </>
   );
 };
