@@ -4,23 +4,27 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button/Button";
 import CheckBox from "../components/CheckBox/CheckBox";
 import PasswordHistory from "../components/PasswordHistory/PasswordHistory";
+import copyPassword from "../utils/copyPassword";
 import generatePassword from "../utils/generatePassword";
-
-const passHistory: Array<{ date: number; pass: string }> = [];
 
 const Generate: NextPage = () => {
   const [options, setOptions] = useState({
     lowerCase: true,
     upperCase: true,
     numbers: true,
-    symbols: false,
+    symbols: true,
   });
   const [length, setLength] = useState(14);
   const [password, setPassword] = useState("");
   const [showHistory, setShowHistory] = useState(false);
+  const [passHistory, setPassHistory] = useState<
+    Array<{ date: number; pass: string }>
+  >([]);
 
   useEffect(() => {
-    genPass();
+    if (passHistory.length === 0) {
+      genPass();
+    }
   }, []);
 
   const onChange = (
@@ -32,11 +36,10 @@ const Generate: NextPage = () => {
     };
     if (Object.entries(newOptions).every((x) => x[1] === false)) {
       setOptions({ ...newOptions, lowerCase: true });
-      genPass();
     } else {
       setOptions(newOptions);
-      genPass();
     }
+    genPass();
   };
 
   const genPass = () => {
@@ -45,8 +48,12 @@ const Generate: NextPage = () => {
     setPassword(pass);
   };
 
-  const copyPassword = () => {
-    navigator.clipboard.writeText(password);
+  const onClearHistory = () => {
+    setPassHistory([]);
+  };
+
+  const closeModal = () => {
+    setShowHistory(false);
   };
 
   return (
@@ -81,14 +88,28 @@ const Generate: NextPage = () => {
         <div className="flex justify-between">
           <div className="flex gap-8">
             <Button onClick={genPass}>Regenerate password</Button>
-            <Button onClick={copyPassword} className="bg-slate dark:bg-slate">
+            <Button
+              onClick={() => copyPassword(password)}
+              className="bg-slate dark:bg-slate"
+            >
               Copy password
             </Button>
           </div>
-          <Button className="bg-slate dark:bg-slate">{ClockSvg}</Button>
+          <Button
+            className="bg-slate dark:bg-slate"
+            onClick={() => setShowHistory(true)}
+          >
+            {ClockSvg}
+          </Button>
         </div>
       </section>
-      <PasswordHistory history={passHistory} />
+      {showHistory && (
+        <PasswordHistory
+          history={passHistory}
+          onClear={onClearHistory}
+          onClose={closeModal}
+        />
+      )}
     </>
   );
 };

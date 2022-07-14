@@ -1,21 +1,25 @@
 import Divider from "../Divider/Divider";
+import PasswordEntry from "../PasswordEntry/PasswordEntry";
 
 interface IProps {
   history: Array<{
     pass: string;
     date: number;
   }>;
+  onClear: () => void;
+  onClose: () => void;
 }
 
-const PasswordHistory = ({ history = [] }: IProps) => {
+const PasswordHistory = ({ history = [], onClear, onClose }: IProps) => {
   const isEmpty = history.length === 0;
-  console.log(history, isEmpty);
   return (
     <div className="fixed top-0 left-0 h-full w-full z-10 outline-none overflow-x-hidden overflow-y-auto bg-[#848A9775] p-4">
       <div className="bg-white dark:bg-lightNavy rounded-sm min-w-[150] max-w-lg m-auto mt-8">
         <div className="flex justify-between items-center">
           <h2 className="text-xl m-4 dark:text-lightSlate">PASSWORD HISTORY</h2>
-          <button className="text-xl m-4 dark:text-slate">x</button>
+          <button onClick={onClose} className="text-xl m-4 dark:text-slate">
+            x
+          </button>
         </div>
         <Divider />
         <div className="p-4">
@@ -24,13 +28,32 @@ const PasswordHistory = ({ history = [] }: IProps) => {
               There are no passwords to list.
             </p>
           )}
+          {!isEmpty &&
+            history.map((x, i) => {
+              if (i !== history.length - 1) {
+                return (
+                  <>
+                    <PasswordEntry pass={x.pass} date={x.date} />
+                    <Divider />
+                  </>
+                );
+              } else {
+                return <PasswordEntry pass={x.pass} date={x.date} />;
+              }
+            })}
         </div>
         <Divider />
         <div className="flex justify-between items-center p-4">
-          <button className="p-2 border-2 dark:border-lightSlate rounded-md hover:bg-gray-200 dark:hover:bg-lightestSlate dark:bg-slate">
+          <button
+            onClick={onClose}
+            className="p-2 border-2 dark:border-lightSlate rounded-md hover:bg-gray-200 dark:hover:bg-lightestSlate dark:bg-slate"
+          >
             Close
           </button>
-          <button className="p-2 border-2 dark:border-lightSlate rounded-md bg-white  text-red-600 hover:bg-red-600 hover:text-white ">
+          <button
+            onClick={onClear}
+            className="p-2 border-2 dark:border-lightSlate rounded-md bg-white  text-red-600 hover:bg-red-600 hover:text-white "
+          >
             {trashSVG}
           </button>
         </div>
