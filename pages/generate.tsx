@@ -13,6 +13,7 @@ const Generate: NextPage = () => {
     upperCase: true,
     numbers: true,
     symbols: true,
+    ambiguous: false,
   });
   const [length, setLength] = useState(14);
   const [password, setPassword] = useState("");
@@ -22,13 +23,11 @@ const Generate: NextPage = () => {
   >([]);
 
   useEffect(() => {
-    if (passHistory.length === 0) {
-      genPass();
-    }
-  }, []);
+    genPass();
+  }, [options]);
 
   const onChange = (
-    option: "lowerCase" | "upperCase" | "numbers" | "symbols"
+    option: "lowerCase" | "upperCase" | "numbers" | "symbols" | "ambiguous"
   ) => {
     const newOptions = {
       ...options,
@@ -39,12 +38,11 @@ const Generate: NextPage = () => {
     } else {
       setOptions(newOptions);
     }
-    genPass();
   };
 
   const genPass = () => {
     const pass = generatePassword(length, options);
-    passHistory.push({ pass, date: Date.now() });
+    passHistory.unshift({ pass, date: Date.now() });
     setPassword(pass);
   };
 
@@ -85,7 +83,7 @@ const Generate: NextPage = () => {
             value={options[x.id]}
           />
         ))}
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-wrap gap-4">
           <div className="flex gap-8">
             <Button onClick={genPass}>Regenerate password</Button>
             <Button
@@ -121,6 +119,7 @@ const optionsArr = [
   { id: "upperCase", label: "A-Z" },
   { id: "numbers", label: "0-9" },
   { id: "symbols", label: " !@#$%^&* " },
+  { id: "ambiguous", label: "Ambiguous characters" },
 ] as const;
 
 const ClockSvg = (

@@ -2,12 +2,14 @@ const lowercase = "abcdefghijklmnopqrstuvwxyz";
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbers = "0123456789";
 const symbols = "!@#$%^&*";
+const ambiguous = '()+_-=}{[]|:;"/?.><,`~';
 
 interface IOptions {
   lowerCase: boolean;
   upperCase: boolean;
   numbers: boolean;
   symbols: boolean;
+  ambiguous: boolean;
 }
 
 export default function generatePassword(length: number, options: IOptions) {
@@ -25,6 +27,9 @@ export default function generatePassword(length: number, options: IOptions) {
   }
   if (options.symbols) {
     pool += symbols;
+  }
+  if (options.ambiguous) {
+    pool += ambiguous;
   }
 
   const poolLength = pool.length;
