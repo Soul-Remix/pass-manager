@@ -81,6 +81,7 @@ const Generate: NextPage = () => {
             label={x.label}
             onChange={() => onChange(x.id)}
             value={options[x.id]}
+            key={x.id}
           />
         ))}
         <div className="flex justify-between flex-wrap gap-4">

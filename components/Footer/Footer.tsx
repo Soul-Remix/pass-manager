@@ -5,14 +5,19 @@ const Footer = () => {
         href="https://soul-remix.netlify.app/"
         className={textStyle}
         target="_blank"
+        rel="noreferrer"
       >
         A soul-remix project
       </a>
       <div className="flex justify-around p-2">
-        <a href="https://github.com/Soul-Remix" target="_blank">
+        <a
+          href="https://github.com/Soul-Remix"
+          target="_blank"
+          rel="noreferrer"
+        >
           {githubSvg}
         </a>
-        <a href="mailto:soulremix-dev@pm.me" target="_blank">
+        <a href="mailto:soulremix-dev@pm.me" target="_blank" rel="noreferrer">
           {emailSvg}
         </a>
       </div>
