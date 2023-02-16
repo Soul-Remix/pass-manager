@@ -2,6 +2,8 @@
 
 Pass Manager is a web app built using [Next](https://nextjs.org), Written in [TS](https://www.typescriptlang.org/).
 
+[Live Page](https://pass-manager-next.netlify.app/)
+
 ## Features
 
 - Generate a new password With different options, Password length, alpha char, non alpha char, numbers, and special character
